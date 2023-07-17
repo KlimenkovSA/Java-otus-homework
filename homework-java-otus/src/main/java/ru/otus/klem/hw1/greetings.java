@@ -7,5 +7,6 @@ public class greetings {
         System.out.println("from");
         System.out.println("Java");
 
+
     }
 }
