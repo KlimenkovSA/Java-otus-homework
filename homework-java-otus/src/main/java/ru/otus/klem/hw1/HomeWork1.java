@@ -49,7 +49,7 @@ public class HomeWork1 {
         } else {
             System.out.println("Сумма отрицательная");
         }
-    }п
+    }
 
     public static void selectColor() {
         int data = 25;
