@@ -1,6 +1,6 @@
 package ru.otus.klem.hw5;
 
-public class lesson5 {
+public class Lesson5 {
     public static void main(String[] args) {
         int number = 8;
         String str = "hell";
@@ -9,7 +9,7 @@ public class lesson5 {
 
         printStrings(number, str);
         printSumArr(arr);
-        printStrings(number, emptyArray);
+        fillArr(number, emptyArray);
         System.out.println();
         upArray(number, arr);
         System.out.println();
@@ -24,14 +24,13 @@ public class lesson5 {
     public static void printSumArr(int[] arr) {
         int sumRez = 0;
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] <= 5) {
-                continue;
+            if (arr[i] > 5) {
+                sumRez += arr[i];
             }
-            sumRez += arr[i];
         }
         System.out.println(sumRez);
     }
-    public static void printStrings(int numb, int[] arr) {
+    public static void fillArr(int numb, int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             arr[i] = numb;
             System.out.print(arr[i] + " ");

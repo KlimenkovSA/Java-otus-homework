@@ -9,9 +9,9 @@ import java.util.Scanner;
 //● Реализуйте метод, проверяющий что есть “точка” в массиве, в которой сумма левой и правой части
 //        равны. “Точка находится между элементами”;
 //        Пример: { 1, 1, 1, 1, 1, | 5 }, { 5, | 3, 4, -2 }, { 7, 2, 2, 2 }, { 9, 4 }
-//● Реализуйте метод, проверяющий что все элементы массива идут в порядке убывания или  возрастания (по выбору пользователя)
+//● Реализуйте метод, проверяющий что все элементы массива идут в порядке убывания или возрастания (по выбору пользователя)
 //● Реализуйте метод, “переворачивающий” входящий массив Пример: { 1 2 3 4 } => { 4 3 2 1 }
-public class lesson5star {
+public class Lesson5star {
     public static void main(String[] args) {
         int[] arr1 = {1, 2, 3};
         int[] arr2 = {2, 2};
@@ -22,7 +22,7 @@ public class lesson5star {
         int[] array3 = {7, 2, 2, 2};
         int[] array4 = {9, 4};
 
-        int[] checkArray = {7, 6, 5, 4, 3};
+        int[] checkArray = {7, 8, 9, 10, 14};
 
         int[] reverse = {9, 8, 7, 6, 5};
         System.out.println("Результат сложения массивов: " + Arrays.toString(sumСomparison(arr1, arr2, arr3)));
@@ -79,33 +79,25 @@ public class lesson5star {
     }
 
     public static void checkIncrease(int... array) {
-        //System.out.println(Arrays.toString(array));   //{1, 3, 2, 5, 4};
         Scanner scanner = new Scanner(System.in);
         System.out.println("Какой медот проверки применить к массиву "+ Arrays.toString(array) + " up - Возрастание, down - убывание ");
         String func = scanner.next();
         if (func.equals("up")){
-            int a = array[0];
-            for (int i = 0; i < array.length; i++) {
-                if (a == array[i]){
-                    System.out.println(a);
-                    a += 1;
-
-                }
-                else {
-                    System.out.println("порядок нарушен на " + (i+1) + " элементе");
+            for (int i = 0; i < array.length-1; i++) {
+                if (array[i] > array[i+1]){
+                    System.out.println("порядок возрастания нарушен: " + array[i] +" больше " + array[i+1]);
                     break;
+                } else {
+                    System.out.println(array[i] + " меньше " + array[i+1]);
                 }
             }
         } else if (func.equals("down")) {
-            int a = array[0];
-            for (int i = 0; i < array.length; i++) {
-                if (a == array[i]){
-                    System.out.println(a);
-                    a -= 1;
-                }
-                else {
-                    System.out.println("порядок нарушен на " + (i+1)  + " элементе");
+            for (int i = 0; i < array.length-1; i++) {
+                if (array[i] < array[i+1]){
+                    System.out.println("порядок убывания нарушен: " + array[i+1] +" больше " + array[i]);
                     break;
+                } else {
+                    System.out.println(array[i] + " Больше " + array[i+1]);
                 }
             }
         } else {
