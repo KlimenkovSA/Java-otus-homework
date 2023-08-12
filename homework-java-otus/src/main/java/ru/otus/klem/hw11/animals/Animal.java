@@ -32,14 +32,14 @@ public class Animal {
     }
 
     public int swim(int distance, String typeAnimal) {
-        if (typeAnimal == "cat") {
+        if (typeAnimal.equals("cat")) {
             System.out.println(name + " не умеет плавать");
             return -1;
         }
-        else if (typeAnimal == "dog") {
+        else if (typeAnimal.equals("dog")) {
             endurance = (endurance - distance) / 2;
         }
-        else if  (typeAnimal == "horse") {
+        else if  (typeAnimal.equals("horse")) {
             endurance = (endurance - distance) / 4;
         }
         else {
@@ -55,7 +55,6 @@ public class Animal {
             return time;
         }
     }
-
     public void info() {
         if (!tiredness) {
             System.out.println("Животное " + name + " устало");
