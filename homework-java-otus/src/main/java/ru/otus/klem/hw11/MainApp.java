@@ -1,8 +1,8 @@
 package ru.otus.klem.hw11;
 
-import ru.otus.klem.hw11.Animals.Cat;
-import ru.otus.klem.hw11.Animals.Dog;
-import ru.otus.klem.hw11.Animals.Horse;
+import ru.otus.klem.hw11.animals.Cat;
+import ru.otus.klem.hw11.animals.Dog;
+import ru.otus.klem.hw11.animals.Horse;
 
 //Создайте классы Cat, Dog и Horse с наследованием от класса Animal
 //У каждого животного есть имя, скорость бега и плавания (м/с), и выносливость (измеряется в условных единицах)
@@ -25,15 +25,16 @@ public class MainApp {
        cat.run(distance);
        cat.info();
        cat.run(distance);
-       cat.swim(distance);
+       cat.swim(distance,"cat");
        cat.info();
        dog.run(distance);
        dog.info();
-       dog.swim(distance);
+       dog.swim(distance,"dog");
        dog.info();
        horse.run(distance);
        horse.info();
-       horse.swim(distance);
+       horse.swim(distance,"horse");
        horse.info();
+
     }
 }
