@@ -4,7 +4,7 @@ public class Box {
     private final int sizeX;
     private final int sizeY;
     private String color;
-    boolean boxCondition;
+    private boolean boxCondition;
     private String item;
 
     public Box(int sizeX, int sizeY, String color, boolean boxCondition, String item) {

@@ -25,10 +25,10 @@ public class MainApplication {
 
         Date dt = new Date();
         int year = dt.getYear();
-        int current_Year = year + 1900;
+        int currentYear = year + 1900;
 
         for (int i = 0; i < users.length; i++) {
-            if (users[i].getYearOfBirth() <= current_Year - 40) {
+            if (users[i].getYearOfBirth() <= currentYear - 40) {
                 users[i].info();
             }
         }
