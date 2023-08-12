@@ -17,24 +17,24 @@ import ru.otus.klem.hw11.animals.Horse;
 //Добавляем метод info(), который выводит в консоль состояние животного.
 public class MainApp {
     public static void main(String[] args) {
-       int distance = 250;
-       Cat cat = new Cat("Tom",10,0,300);
-       Dog dog = new Dog("Spike",8,6,400);
-       Horse horse = new Horse("Tornado",15,2,600);
+        int distance = 250;
+        Cat cat = new Cat("Tom", 10, 0, 300);
+        Dog dog = new Dog("Spike", 8, 6, 400);
+        Horse horse = new Horse("Tornado", 15, 2, 600);
 
-       cat.run(distance);
-       cat.info();
-       cat.run(distance);
-       cat.swim(distance,"cat");
-       cat.info();
-       dog.run(distance);
-       dog.info();
-       dog.swim(distance,"dog");
-       dog.info();
-       horse.run(distance);
-       horse.info();
-       horse.swim(distance,"horse");
-       horse.info();
+        cat.run(distance);
+        cat.info();
+        cat.run(distance);
+        cat.swim(distance, "cat");
+        cat.info();
+        dog.run(distance);
+        dog.info();
+        dog.swim(distance, "dog");
+        dog.info();
+        horse.run(distance);
+        horse.info();
+        horse.swim(distance, "horse");
+        horse.info();
 
     }
 }

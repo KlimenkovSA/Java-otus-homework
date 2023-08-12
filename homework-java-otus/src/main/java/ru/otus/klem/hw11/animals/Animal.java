@@ -35,14 +35,11 @@ public class Animal {
         if (typeAnimal.equals("cat")) {
             System.out.println(name + " не умеет плавать");
             return -1;
-        }
-        else if (typeAnimal.equals("dog")) {
+        } else if (typeAnimal.equals("dog")) {
             endurance = (endurance - distance) / 2;
-        }
-        else if  (typeAnimal.equals("horse")) {
+        } else if (typeAnimal.equals("horse")) {
             endurance = (endurance - distance) / 4;
-        }
-        else {
+        } else {
             endurance -= distance;
         }
         int time = distance / runningSpeed;
@@ -55,6 +52,7 @@ public class Animal {
             return time;
         }
     }
+
     public void info() {
         if (!tiredness) {
             System.out.println("Животное " + name + " устало");
