@@ -6,15 +6,15 @@ public class Animal {
     int swimmingSpeed;
     int endurance;
     boolean tiredness;
-    String typeAnimal;
+    int coefSwim;
 
-    public Animal(String name, int runningSpeed, int swimmingSpeed, int endurance, boolean tiredness, String typeAnimal) {
+    public Animal(String name, int runningSpeed, int swimmingSpeed, int endurance, boolean tiredness, int coefSwim) {
         this.name = name;
         this.runningSpeed = runningSpeed;
         this.swimmingSpeed = swimmingSpeed;
         this.endurance = endurance;
         this.tiredness = tiredness;
-        this.typeAnimal = typeAnimal;
+        this.coefSwim = coefSwim;
     }
 
     public int run(int distance) {
@@ -31,16 +31,12 @@ public class Animal {
         }
     }
 
-    public int swim(int distance, String typeAnimal) {
-        if (typeAnimal.equals("cat")) {
+    public int swim(int distance) {
+
+        try {
+            endurance = (endurance - distance) / coefSwim;
+        } catch (ArithmeticException ex) {
             System.out.println(name + " не умеет плавать");
-            return -1;
-        } else if (typeAnimal.equals("dog")) {
-            endurance = (endurance - distance) / 2;
-        } else if (typeAnimal.equals("horse")) {
-            endurance = (endurance - distance) / 4;
-        } else {
-            endurance -= distance;
         }
         int time = distance / runningSpeed;
         if (endurance < 0) {
