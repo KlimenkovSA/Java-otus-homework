@@ -32,19 +32,19 @@ public class Animal {
     }
 
     public int swim(int distance) {
-
-        try {
-            endurance = (endurance - distance) / coefSwim;
-        } catch (ArithmeticException ex) {
-            System.out.println(name + " не умеет плавать");
-        }
         int time = distance / runningSpeed;
+        if (coefSwim == 0) {
+            System.out.println(name + " не умеет плавать");
+            return time;
+        }
+        endurance = endurance - distance * coefSwim;
+
         if (endurance < 0) {
             System.out.println("У " + name + " не хватило выносливости проплыть " + distance + " метров");
             tiredness = false;
             return -1;
         } else {
-            System.out.println(name + " пробежал дистанцию " + distance + " метров за " + time + " секунд и осталось выносливости: " + endurance);
+            System.out.println(name + " проплыл дистанцию " + distance + " метров за " + time + " секунд и осталось выносливости: " + endurance);
             return time;
         }
     }
