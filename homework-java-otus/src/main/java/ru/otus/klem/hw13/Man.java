@@ -1,35 +1,39 @@
 package ru.otus.klem.hw13;
 
-import ru.otus.klem.hw13.transport.Car;
+import ru.otus.klem.hw13.transport.Transport;
 
 public class Man {
     private final String name;
-    private String currentTransport;
 
-    public Man(String name, String currentTransport) {
-        this.name = name;
-        this.currentTransport = currentTransport;
+    private Transport currentTransport;
+
+
+    public String getName() {
+        return name;
     }
 
-    public String getCurrentTransport() {
+    public Man(String name) {
+        this.name = name;
+    }
+
+    public Transport getCurrentTransport() {
         return currentTransport;
     }
 
-    public void setCurrentTransport(String currentTransport) {
+    public void setCurrentTransport(Transport currentTransport) {
         this.currentTransport = currentTransport;
     }
 
-    public void getTransport(Car car){
-
-
+    public void move(int distance, TypeTerrain typeTerrain) {
+        if (this.getCurrentTransport() == null) {
+            System.out.println(this.name + " прошел пешком дистанцию " + distance + " км по местности: " + typeTerrain.getNameTerrain());
+        } else {
+            boolean trip = currentTransport.move(distance, typeTerrain);
+            if (trip) {
+                System.out.println(this.name + " проехал " + distance + " км на транспорте: " + currentTransport.getNameTransport() + " , по местности: " + typeTerrain.getNameTerrain());
+            } else {
+                System.out.println(this.name + " не может проехать по местности: " + typeTerrain.getNameTerrain() + " на " + currentTransport.getNameTransport());
+            }
+        }
     }
-
-    public void dismount(){
-
-    }
-    @Override
-    public String toString() {
-        return name + "Текущий транспорт: " + currentTransport;
-    }
-
 }
