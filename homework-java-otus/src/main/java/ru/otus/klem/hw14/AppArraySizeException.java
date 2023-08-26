@@ -1,5 +1,5 @@
 package ru.otus.klem.hw14;
 
-public class AppArraySizeException extends Throwable {
+public class AppArraySizeException extends RuntimeException {
 
 }

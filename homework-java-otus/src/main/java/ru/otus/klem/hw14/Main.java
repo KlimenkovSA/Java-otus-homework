@@ -6,30 +6,30 @@ package ru.otus.klem.hw14;
 //В методе main() необходимо вызвать полученный метод, обработать возможные исключения AppArraySizeException и AppArrayDataException и вывести результат расчета (сумму элементов, при условии что подали на вход корректный массив).
 public class Main {
     public static void main(String[] args) {
-
-        String[][] arr = new String[][]{{"1", "1", "1", "1"}, {"2", "2", "2", "2"}, {"3", "3", "3", "3"}, {"4", "4", "4", "4"}};
         try {
-            try {
-                int result = sumOfElements(arr);
-                System.out.println(result);
-            } catch (AppArraySizeException ex) {
-                System.out.println("Не корректный массив");
-            }
-        } catch (AppArrayDataException ex) {
+            String[][] arr = new String[][]{{"1", "1", "1", "1"}, {"2", "2", "2", "2"}, {"3", "3", "3", "3"}, {"4", "4", "4", "4"}};
+            System.out.println(sumOfElements(arr));
+        } catch (AppArraySizeException ex) {
+            System.out.println("Не корректный массив");
+        } catch (
+                AppArrayDataException ex) {
             System.out.println("Не корректный тип в ячейке: " + ex.i + "x" + ex.j);
         }
-
     }
 
-    public static int sumOfElements(String[][] arr) throws AppArraySizeException, AppArrayDataException {
+
+    public static int sumOfElements(String[][] arr) throws RuntimeException {
         int summ = 0;
         if (arr.length != 4) {
             throw new AppArraySizeException();
         }
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i].length != 4) {
+        for (String[] strings : arr) {
+            if (strings.length != 4) {
                 throw new AppArraySizeException();
             }
+        }
+
+        for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
                 try {
                     summ += Integer.parseInt(arr[i][j]);
@@ -37,7 +37,6 @@ public class Main {
                     throw new AppArrayDataException(i, j);
                 }
             }
-
         }
         return summ;
     }
