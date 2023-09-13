@@ -27,7 +27,7 @@ public class Main {
             System.out.println("По запрашиваемому имени найдены номера: " + rez);
         }
         boolean rezPhoneNumb = phoneBook.containsPhoneNumber(Phone);
-        if (rezPhoneNumb == false) {
+        if (!rezPhoneNumb) {
             System.out.println("Запрашиваемый номер не найден");
         } else {
             System.out.println("Запрашиваемый номер найден");
