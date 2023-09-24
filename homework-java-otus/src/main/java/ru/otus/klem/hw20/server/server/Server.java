@@ -24,16 +24,14 @@ public class Server implements AutoCloseable {
             System.out.println(second);
             out.write("Chose action: + - * /\n");
             out.flush();
-            int operType = in.read();
-            System.out.println((char) operType);
+            int action = in.read();
+            System.out.println((char) action);
             try {
-                out.write(" Результат = " + calculate(first, second, operType) + " press Enter\n");
+                out.write(" Результат = " + calculate(first, second, action) + " press Enter\n");
             } catch (ArithmeticException e) {
                 out.write("Error! division by zero is impossible" + e + "\n");
-                return;
             } catch (RuntimeException e) {
                 out.write("Error!  " + e + "\n");
-                return;
             }
         } finally {
             out.flush();
@@ -43,25 +41,16 @@ public class Server implements AutoCloseable {
         }
     }
 
-    public static int calculate(String first, String second, int operType) {
+    public static int calculate(String first, String second, int action) {
         int result;
         try {
-            switch ((char) operType) {
-                case '+':
-                    result = Integer.parseInt(first) + Integer.parseInt(second);
-                    break;
-                case '-':
-                    result = Integer.parseInt(first) - Integer.parseInt(second);
-                    break;
-                case '*':
-                    result = Integer.parseInt(first) * Integer.parseInt(second);
-                    break;
-                case '/':
-                    result = Integer.parseInt(first) / Integer.parseInt(second);
-                    break;
-                default:
-                    throw new RuntimeException("Error! Enter correct operator");
-            }
+            result = switch ((char) action) {
+                case '+' -> Integer.parseInt(first) + Integer.parseInt(second);
+                case '-' -> Integer.parseInt(first) - Integer.parseInt(second);
+                case '*' -> Integer.parseInt(first) * Integer.parseInt(second);
+                case '/' -> Integer.parseInt(first) / Integer.parseInt(second);
+                default -> throw new RuntimeException("Error! Enter correct operator");
+            };
         } catch (ArithmeticException e) {
             throw new RuntimeException("Error! division by zero is impossible" + e);
         } catch (RuntimeException e) {

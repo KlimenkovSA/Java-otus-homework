@@ -31,5 +31,6 @@ public class MainClient {
         socket.close();
         in.close();
         out.close();
+
     }
 }

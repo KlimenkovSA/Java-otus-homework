@@ -10,10 +10,10 @@ import static ru.otus.klem.hw20.server.server.Server.serverSocket;
 
 public class MainServer {
     static int port = 8088;
+
     public static void main(String[] args) {
         try {
-            try {
-                ServerSocket serverSocket = new ServerSocket(port);
+            try (var serverSocket = new ServerSocket(port)) {
                 System.out.println("Server started!");
                 while (true) {
                     Socket socket = serverSocket.accept();
@@ -25,7 +25,7 @@ public class MainServer {
                 serverSocket.close();
             }
         } catch (IOException e) {
-            System.err.println(e);
+            System.err.println("Error" + e);
         }
     }
 }
