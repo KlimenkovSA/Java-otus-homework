@@ -4,5 +4,6 @@ import java.util.List;
 
 public interface SearchTree {
     Integer find(Integer element);
-    List<Node> getSortedList();
+
+    List<Integer> getSortedList();
 }

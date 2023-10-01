@@ -5,6 +5,11 @@ public class Node {
     Node left;
     Node right;
 
+    public Node(Integer val) {
+        this.value = val;
+        this.left = null;
+        this.right = null;
+    }
     @Override
     public String toString() {
         return "Node{" +

@@ -4,38 +4,26 @@ import java.util.ArrayList;
 import java.util.*;
 
 public class Tree implements SearchTree {
-
     private Node root;
-    private final List<Node> sortedList = new ArrayList<>();
+    public List<Integer> sortedList = new ArrayList<>();
 
-    public void nodeInsert(int value) {
-        Node newNode = new Node();
-        newNode.value = value;
-        if (root == null) {
-            root = newNode;
-            sortedList.add(root);
-        } else {
-            Node currentNode = root;
-            while (true) {
-                if (currentNode.value == value) {
-                    return;
-                } else if (currentNode.value > value) {
-                    if (currentNode.left == null) {
-                        currentNode.left = newNode;
-                        sortedList.add(currentNode.left);
-                        return;
-                    }
-                    currentNode = currentNode.left;
-                } else {
-                    if (currentNode.right == null) {
-                        currentNode.right = newNode;
-                        sortedList.add(currentNode.right);
-                        return;
-                    }
-                    currentNode = currentNode.right;
-                }
-            }
+    public Tree(List<Integer> list) {
+        Collections.sort(list);
+        if (list.isEmpty()) {
+            root = null;
         }
+        root = nodeInsert(list, 0, list.size() - 1);
+    }
+
+    private Node nodeInsert(List<Integer> list, int first, int last) {
+        if (first > last) {
+            return null;
+        }
+        int middle = (first + last) / 2;
+        Node newNode = new Node(list.get(middle));
+        newNode.left = nodeInsert(list, first, middle - 1);
+        newNode.right = nodeInsert(list, middle + 1, last);
+        return newNode;
     }
 
     @Override
@@ -46,24 +34,33 @@ public class Tree implements SearchTree {
     private Integer get(Node root, Integer element) {
         if (null == root) return null;
         int cmp = element.compareTo(root.value);
-        if (0 > cmp) {
+        if (cmp < 0) {
             return get(root.left, element);
-        } else if (0 < cmp) {
+        } else if (cmp > 0) {
             return get(root.right, element);
         } else {
             return root.value;
         }
     }
-    @Override
-    public List<Node> getSortedList() {
-        List<Integer> listNumb = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15));
-        int middleIndex = listNumb.size() / 2;
-        this.nodeInsert(listNumb.get(middleIndex));
-        for (Integer val : listNumb) {
-            this.nodeInsert(val);
+
+    public static List<Integer> rangeFilling(int min, int max) {
+        List<Integer> arrayList = new ArrayList<>();
+        for (int i = min; i <= max; i += 1) {
+            arrayList.add(i);
         }
+        return arrayList;
+    }
+
+    @Override
+    public List<Integer> getSortedList() {
+        Collections.sort(sortedList);
         return sortedList;
     }
 
-
+    @Override
+    public String toString() {
+        return "Tree{" +
+                "root=" + root +
+                '}';
+    }
 }

@@ -1,5 +1,9 @@
 package ru.otus.klem.hw17;
 
+import java.util.List;
+
+import static ru.otus.klem.hw17.Tree.rangeFilling;
+
 //Из Предварительно отсортированного списка (List) сформировать двоичное дерево поиска
 //Написать рекурсивную функцию поиска в сформированном дереве
 //Класс должен имплементировать следующий интерфейс
@@ -12,13 +16,10 @@ package ru.otus.klem.hw17;
 // List getSortedList();
 // }
 public class Main {
-    static Tree tree = new Tree();
     public static void main(String[] args) {
-
-        System.out.println(tree.getSortedList());
-        System.out.println(tree.find(10));
-        System.out.println(tree.find(18));
-
-
+        List<Integer> list = rangeFilling(1, 17);
+        SearchTree searchTree = new Tree(list);
+        System.out.println(searchTree.find(11));
+        System.out.println(searchTree.find(18));
     }
 }
