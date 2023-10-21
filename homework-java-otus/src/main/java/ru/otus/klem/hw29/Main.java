@@ -20,6 +20,7 @@ public class Main  {
         service.execute(Main::printA);
         service.execute(Main::printB);
         service.execute(Main::printC);
+        service.shutdown();
     }
 
     public static void printA() {
