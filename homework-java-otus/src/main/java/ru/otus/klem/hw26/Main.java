@@ -7,6 +7,10 @@ package ru.otus.klem.hw26;
 //Реализуйте метод compare, позволяющий сравнить текущую коробку с переданной в качестве аргумента. true – если их массы равны. Можно сравнивать коробки с разными типами фруктов;
 //Реализуйте метод, позволяющий пересыпать фрукты из текущей коробки в другую. Помним про сортировку фруктов в коробках;
 
+import ru.otus.klem.hw26.Fruits.Apple;
+import ru.otus.klem.hw26.Fruits.Fruit;
+import ru.otus.klem.hw26.Fruits.Orange;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +45,7 @@ public class Main {
         orangeBox1.add(orange2);
         orangeBox1.add(orange3);
 
-       // orangeBox1.add(orange4); //для равенства по весу
+        //orangeBox1.add(orange4); //для равенства по весу
         System.out.println("Вес коробки с апельсинами: " + orangeBox1.weight());
         System.out.println(appleBox1.compare(orangeBox1));
 

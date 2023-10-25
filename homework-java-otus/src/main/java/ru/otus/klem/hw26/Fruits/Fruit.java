@@ -1,8 +1,8 @@
-package ru.otus.klem.hw26;
+package ru.otus.klem.hw26.Fruits;
 
 
 public class Fruit {
-    private double weight;
+    double weight;
 
     public Fruit(double weight) {
         this.weight = weight;

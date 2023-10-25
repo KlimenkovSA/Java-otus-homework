@@ -1,11 +1,14 @@
 package ru.otus.klem.hw26;
 
+import ru.otus.klem.hw26.Fruits.Fruit;
+
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Box<T extends Fruit> {
 
-    ArrayList<T> allFriut;
+    private List<T> allFriut;
 
     public Box(ArrayList<T> fruitList) {
         this.allFriut = fruitList;
@@ -26,12 +29,16 @@ public class Box<T extends Fruit> {
     }
 
     public boolean compare(Box<?> anotherBox) {
-        //return anotherBox.weight() - this.weight() < 0.0001;
-        return this.weight() == anotherBox.weight();
+        //return anotherBox.weight() - this.weight() < 0.0001; не работает этот вариант !
+        //return this.weight() == anotherBox.weight();
+        return Math.abs(anotherBox.weight() - this.weight()) < 0.0001;
 
     }
 
     public void transferTo(Box<? super T> anotherBox) {
+        if (anotherBox == null || this.allFriut == null) {
+            return;
+        }
         anotherBox.allFriut.addAll(this.allFriut);
         this.allFriut.clear();
     }

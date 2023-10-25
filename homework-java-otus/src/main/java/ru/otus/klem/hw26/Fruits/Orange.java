@@ -1,4 +1,4 @@
-package ru.otus.klem.hw26;
+package ru.otus.klem.hw26.Fruits;
 
 
 public class Orange extends Fruit {
