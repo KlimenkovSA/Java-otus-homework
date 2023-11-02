@@ -1,31 +1,32 @@
 CREATE TABLE public.tests (
-	id int4 NOT NULL,
-	test_name int4 NOT NULL DEFAULT 4000,
-	CONSTRAINT tests_pk PRIMARY KEY (id)
+	id int4 NOT NULL,                                 id
+	test_name varchar NOT NULL,                       название теста
+	CONSTRAINT tests_pk PRIMARY KEY (id),
+	CONSTRAINT tests_un UNIQUE (test_name)
 );
 
+
 CREATE TABLE public.questions (
-	id_q int4 NOT NULL,
-	quest_numb int4 NOT NULL,
-	question varchar NULL DEFAULT 4000,
-	id_tests int4 NULL,
-	CONSTRAINT questions_pk PRIMARY KEY (id_q)
+	id int4 NOT NULL,                                  id
+	question varchar NOT NULL DEFAULT 4000,            текст вопроса
+	quest_id int4 NOT NULL,                            поле для связки с таблицей tests
+	CONSTRAINT questions_pk PRIMARY KEY (id)
 );
 
 
 -- public.questions foreign keys
 
-ALTER TABLE public.questions ADD CONSTRAINT questions_fk FOREIGN KEY (id_tests) REFERENCES public.tests(id);
+ALTER TABLE public.questions ADD CONSTRAINT questions_fk FOREIGN KEY (quest_id) REFERENCES public.tests(id);
 
 CREATE TABLE public.answers (
-	id_ans int4 NOT NULL,
-	answer_is varchar NULL,
-	"y/n" bpchar(1) NULL,
-	id_quest int4 NULL,
-	CONSTRAINT answers_pk PRIMARY KEY (id_ans)
+	id int4 NOT NULL,                                 id
+	answer_is varchar NOT NULL DEFAULT 4000,          текст ответа
+	"y/n" bpchar(1) NOT NULL,                         флаг ответа
+	ans_id int4 NOT NULL,                             поле для связки с таблицей question
+	CONSTRAINT answers_pk PRIMARY KEY (id)
 );
 
 
 -- public.answers foreign keys
 
-ALTER TABLE public.answers ADD CONSTRAINT answers_fk FOREIGN KEY (id_quest) REFERENCES public.questions(id_q);
+ALTER TABLE public.answers ADD CONSTRAINT answers_fk FOREIGN KEY (ans_id) REFERENCES public.questions(id);
