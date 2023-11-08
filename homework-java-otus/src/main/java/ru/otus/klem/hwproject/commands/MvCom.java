@@ -3,11 +3,9 @@ package ru.otus.klem.hwproject.commands;
 import ru.otus.klem.hw14.AppArrayDataException;
 import ru.otus.klem.hwproject.model.CommandRequest;
 import ru.otus.klem.hwproject.model.CommandResponse;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class MvCom implements FileCommand {

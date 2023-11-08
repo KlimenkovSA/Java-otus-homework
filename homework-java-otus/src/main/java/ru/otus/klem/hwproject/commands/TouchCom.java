@@ -3,11 +3,10 @@ package ru.otus.klem.hwproject.commands;
 import ru.otus.klem.hw14.AppArrayDataException;
 import ru.otus.klem.hwproject.model.CommandRequest;
 import ru.otus.klem.hwproject.model.CommandResponse;
-
 import java.io.File;
 import java.io.IOException;
 
-public class TouchCom implements FileCommand{
+public class TouchCom implements FileCommand {
     @Override
     public String getName() {
         return "touch";

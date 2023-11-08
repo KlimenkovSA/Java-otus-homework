@@ -7,6 +7,8 @@ import java.io.IOException;
 
 public interface FileCommand {
     String getName();
+
     String getDescription();
+
     CommandResponse execute(CommandRequest request) throws IOException, AppArrayDataException;
 }

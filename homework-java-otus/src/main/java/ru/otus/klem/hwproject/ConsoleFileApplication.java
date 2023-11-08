@@ -4,7 +4,6 @@ import ru.otus.klem.hwproject.commands.*;
 import ru.otus.klem.hwproject.service.ConsoleFileManager;
 import ru.otus.klem.hwproject.service.FileManager;
 
-import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -25,12 +24,6 @@ public class ConsoleFileApplication {
                 new TouchCom(),
                 new FindCom()
         );
-//        //FileSystemView fileSystemView = FileSystemView.getFileSystemView();
-//        ru.otus.klem.hwproject.FileManager fm = new ru.otus.klem.hwproject.FileManager();
-//        //fm.currentFolder = fileSystemView.getDefaultDirectory();
-//        fm.currentFolder = new File("C:\\Users\\KLEM\\Desktop\\testFolder");
-
-
         FileManager manager = new ConsoleFileManager(currentLocation,commandList);
         manager.run();
     }

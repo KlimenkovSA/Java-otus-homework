@@ -1,6 +1,5 @@
 package ru.otus.klem.hwproject.commands;
 
-import ru.otus.klem.hw14.AppArrayDataException;
 import ru.otus.klem.hwproject.model.CommandRequest;
 import ru.otus.klem.hwproject.model.CommandResponse;
 import java.io.IOException;
@@ -8,7 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
-public class CpCom implements FileCommand{
+public class CpCom implements FileCommand {
     @Override
     public String getName() {
         return "cp";
@@ -20,7 +19,7 @@ public class CpCom implements FileCommand{
     }
 
     @Override
-    public CommandResponse execute(CommandRequest request) throws IOException{
+    public CommandResponse execute(CommandRequest request) throws IOException {
         try {
             String from = request.command()[1];
             String to = request.command()[2];
@@ -31,9 +30,9 @@ public class CpCom implements FileCommand{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return new CommandResponse(request.currentPath(),"Объект <"+pathFrom.getFileName()+"> успешно скопирован c именем <" + pathTo.getFileName()+ ">" );
-        } catch (ArrayIndexOutOfBoundsException e){
-            return new CommandResponse(request.currentPath(),"Неверные аргументы для команды cp" );
+            return new CommandResponse(request.currentPath(), "Объект <" + pathFrom.getFileName() + "> успешно скопирован c именем <" + pathTo.getFileName() + ">");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return new CommandResponse(request.currentPath(), "Неверные аргументы для команды cp");
         }
 
     }

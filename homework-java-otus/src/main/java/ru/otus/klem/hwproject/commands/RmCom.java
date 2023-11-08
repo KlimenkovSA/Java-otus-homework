@@ -2,7 +2,6 @@ package ru.otus.klem.hwproject.commands;
 
 import ru.otus.klem.hwproject.model.CommandRequest;
 import ru.otus.klem.hwproject.model.CommandResponse;
-
 import java.io.File;
 import java.io.IOException;
 
@@ -41,13 +40,11 @@ public class RmCom implements FileCommand {
     public static void recursiveDelete(File file) {
         if (!file.exists())
             return;
-        //если это папка, то идем внутрь этой папки и вызываем рекурсивное удаление всего, что там есть
         if (file.isDirectory()) {
             for (File f : file.listFiles()) {
                 recursiveDelete(f);
             }
         }
-        // вызываем метод delete() для удаления файлов и пустых(!) папок
         file.delete();
     }
 }

@@ -29,18 +29,17 @@ public class ConsoleFileManager implements FileManager {
         String[] command = getCommand();
 
         while (!command[0].equals("exit")) {
-            if (command[0].equals("help")){
-            String help =  commandList.stream().map(FileCommand::getDescription).collect(Collectors.joining("\n"));
+            if (command[0].equals("help")) {
+                String help = commandList.stream().map(FileCommand::getDescription).collect(Collectors.joining("\n"));
                 System.out.println(help);
-            }
-            else {
+            } else {
                 try {
                     CommandResponse commandResponse = commandMap.get(command[0]).execute(new CommandRequest(currentLocation, command));
-                    if (commandResponse.result() != null){
+                    if (commandResponse.result() != null) {
                         System.out.println(commandResponse.result());
                     }
                     currentLocation = commandResponse.newPath();
-                } catch (NullPointerException e){
+                } catch (NullPointerException e) {
                     System.out.println("Unknown command");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
